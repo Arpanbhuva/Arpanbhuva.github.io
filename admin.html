@@ -163,10 +163,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
             <select id="pf-tag"><option>VLSI</option><option>IoT</option><option>Hardware</option><option>Embedded</option><option>Software</option><option>Other</option></select>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group"><label>Icon (single emoji)</label><input type="text" id="pf-icon" placeholder="e.g. &#9881;" maxlength="4"/></div>
-          <div class="form-group"><label>GitHub Link</label><input type="url" id="pf-link" placeholder="https://github.com/Arpanbhuva/..."/></div>
-        </div>
+        <div class="form-group"><label>GitHub Link</label><input type="url" id="pf-link" placeholder="https://github.com/Arpanbhuva/..."/></div>
         <div class="form-group"><label>Description</label><textarea id="pf-desc" placeholder="Describe what the project does and how..."></textarea></div>
         <div class="form-group"><label>Tech Tags (comma separated)</label><input type="text" id="pf-techs" placeholder="Verilog, FSM, Xilinx Vivado"/></div>
         <div class="save-bar">
@@ -353,7 +350,7 @@ function renderProjList(){
   if(projs.length===0){list.innerHTML='<p style="color:var(--text-dim);font-size:0.85rem;padding:16px 0">No projects yet. Add your first one above.</p>';return;}
   projs.forEach(function(p,i){
     var item=document.createElement('div');item.className='proj-item';
-    item.innerHTML='<div class="proj-item-left"><div class="proj-emoji">'+p.icon+'</div>'
+    item.innerHTML='<div class="proj-item-left">'
       +'<div><div class="proj-item-name">'+p.title+'</div><span class="proj-item-tag">'+p.tag+'</span></div></div>'
       +'<div class="proj-item-btns">'
       +'<button class="edit-btn" onclick="openProjForm('+i+')">Edit</button>'
@@ -385,7 +382,7 @@ function closeProjForm(){document.getElementById('projForm').classList.remove('o
 function saveProject(){
   var projs=get('projects')||DEFAULTS.projects;
   var idx=parseInt(document.getElementById('editIdx').value);
-  var p={id:idx===-1?Date.now():(projs[idx]||{}).id||Date.now(),title:document.getElementById('pf-title').value,tag:document.getElementById('pf-tag').value,icon:document.getElementById('pf-icon').value||'&#9881;',link:document.getElementById('pf-link').value,desc:document.getElementById('pf-desc').value,techs:document.getElementById('pf-techs').value};
+  var p={id:idx===-1?Date.now():(projs[idx]||{}).id||Date.now(),title:document.getElementById('pf-title').value,tag:document.getElementById('pf-tag').value,link:document.getElementById('pf-link').value,desc:document.getElementById('pf-desc').value,techs:document.getElementById('pf-techs').value};
   if(idx===-1){projs.push(p);}else{projs[idx]=p;}
   set('projects',projs);renderProjList();closeProjForm();showMsg('projSavedMsg');
 }
