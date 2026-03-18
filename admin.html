@@ -3,106 +3,110 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Portfolio Admin</title>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<title>Portfolio Admin — Arpan Bhuva</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#f0f4fa;--bg2:#e8eef8;--surface:#fff;
-  --blue:#0057ff;--blue-dim:rgba(0,87,255,0.08);--blue-glow:rgba(0,87,255,0.22);
-  --teal:#00b8a9;--red:#cc2200;
-  --text:#0d1a2e;--text-mid:#3a4f6a;--text-dim:#7a90aa;
-  --border:rgba(0,87,255,0.15);
+  --bg:#f8f9fc;--bg2:#f0f2f8;--surface:#ffffff;
+  --blue:#1a56db;--blue-dim:rgba(26,86,219,0.07);--blue-glow:rgba(26,86,219,0.2);
+  --teal:#0d9488;--red:#dc2626;
+  --text:#111827;--text-mid:#374151;--text-dim:#6b7280;
+  --border:#e5e7eb;--border-hi:#93c5fd;
 }
-body{font-family:'Exo 2',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-/* LOGIN */
-.login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
-.login-card{background:var(--surface);border:2px solid var(--blue);width:100%;max-width:400px;overflow:hidden}
-.login-header{background:var(--blue);padding:28px;text-align:center}
-.login-header h1{font-family:'Orbitron',monospace;font-size:1.2rem;color:#fff;font-weight:900;letter-spacing:2px}
-.login-header p{font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.7);margin-top:6px;letter-spacing:1px}
+/* ── LOGIN ── */
+.login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;background:var(--bg)}
+.login-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;width:100%;max-width:420px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.08)}
+.login-header{background:var(--blue);padding:32px;text-align:center}
+.login-header h1{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;font-weight:800}
+.login-header p{font-size:0.82rem;color:rgba(255,255,255,0.75);margin-top:6px;font-weight:400}
 .login-body{padding:32px}
-.login-body label{font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:8px}
-.login-body input{width:100%;padding:12px 16px;border:1.5px solid var(--border);font-size:0.95rem;font-family:'Share Tech Mono',monospace;letter-spacing:3px;text-align:center;outline:none;margin-bottom:6px;transition:border-color 0.2s}
-.login-body input:focus{border-color:var(--blue)}
-.login-btn{width:100%;margin-top:16px;font-family:'Share Tech Mono',monospace;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;padding:14px;background:var(--blue);color:#fff;border:none;cursor:pointer;transition:all 0.2s;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%)}
-.login-btn:hover{background:#003ecc;box-shadow:0 4px 20px var(--blue-glow)}
-.login-err{font-family:'Share Tech Mono',monospace;font-size:0.72rem;color:var(--red);text-align:center;margin-top:10px;display:none}
-.login-hint{font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--text-dim);text-align:center;margin-top:16px;letter-spacing:1px}
+.login-body label{display:block;font-size:0.75rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px}
+.login-body input{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;text-align:center;letter-spacing:2px;outline:none;transition:border-color 0.2s;background:var(--bg)}
+.login-body input:focus{border-color:var(--blue);background:#fff}
+.login-btn{width:100%;margin-top:16px;font-size:0.85rem;font-weight:600;padding:13px;background:var(--blue);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:all 0.2s;letter-spacing:0.3px}
+.login-btn:hover{background:#1448c4;box-shadow:0 4px 16px var(--blue-glow)}
+.login-err{font-size:0.8rem;color:var(--red);text-align:center;margin-top:10px;display:none;font-weight:500}
+.login-hint{font-size:0.75rem;color:var(--text-dim);text-align:center;margin-top:14px}
 
-/* DASHBOARD */
+/* ── DASHBOARD ── */
 .dash{display:none}
-.dash-nav{background:var(--blue);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
-.dash-logo{font-family:'Orbitron',monospace;font-size:1rem;color:#fff;font-weight:900;letter-spacing:2px}
-.dash-nav-right{display:flex;align-items:center;gap:16px}
-.view-btn{font-family:'Share Tech Mono',monospace;font-size:0.68rem;letter-spacing:1px;padding:7px 14px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);text-decoration:none;transition:all 0.2s;text-transform:uppercase}
-.view-btn:hover{background:rgba(255,255,255,0.25)}
-.logout-btn{font-family:'Share Tech Mono',monospace;font-size:0.68rem;letter-spacing:1px;padding:7px 14px;background:none;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.2);cursor:pointer;text-transform:uppercase;transition:all 0.2s}
-.logout-btn:hover{color:#fff;border-color:rgba(255,255,255,0.5)}
+.dash-nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.05)}
+.dash-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:800;color:var(--blue)}
+.dash-logo span{color:var(--teal)}
+.dash-nav-right{display:flex;align-items:center;gap:12px}
+.view-btn{font-size:0.8rem;font-weight:500;padding:8px 16px;background:var(--blue-dim);color:var(--blue);border:1px solid rgba(26,86,219,0.2);border-radius:6px;text-decoration:none;transition:all 0.2s}
+.view-btn:hover{background:var(--blue);color:#fff}
+.logout-btn{font-size:0.8rem;font-weight:500;padding:8px 16px;background:none;color:var(--text-dim);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all 0.2s}
+.logout-btn:hover{border-color:var(--text);color:var(--text)}
 
-.dash-body{max-width:900px;margin:0 auto;padding:36px 5%}
-.dash-title{font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:900;color:var(--text);margin-bottom:6px}
-.dash-sub{font-family:'Share Tech Mono',monospace;font-size:0.72rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:36px}
+.dash-body{max-width:880px;margin:0 auto;padding:40px 5%}
+.dash-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:800;color:var(--text);margin-bottom:4px}
+.dash-sub{font-size:0.85rem;color:var(--text-dim);margin-bottom:36px}
 
-/* TABS */
+/* ── TABS ── */
 .tabs{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:32px;overflow-x:auto}
-.tab{font-family:'Share Tech Mono',monospace;font-size:0.72rem;letter-spacing:1px;text-transform:uppercase;padding:12px 22px;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;color:var(--text-dim);white-space:nowrap;transition:all 0.2s}
-.tab.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:700}
-.tab:hover{color:var(--blue)}
+.tab{font-size:0.83rem;font-weight:500;padding:11px 22px;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;color:var(--text-dim);white-space:nowrap;transition:all 0.2s}
+.tab.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:600}
+.tab:hover:not(.active){color:var(--text)}
 .tab-content{display:none}
 .tab-content.active{display:block}
 
-/* CARDS */
-.card{background:var(--surface);border:1.5px solid var(--border);padding:28px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,87,255,0.04)}
-.card-title{font-family:'Orbitron',monospace;font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+/* ── CARDS ── */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:24px;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+.card-title{font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--border)}
 
-/* FORMS */
+/* ── FORMS ── */
 .form-group{margin-bottom:18px}
-.form-group label{display:block;font-family:'Share Tech Mono',monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:7px}
-.form-group input,.form-group textarea,.form-group select{width:100%;padding:11px 14px;border:1.5px solid var(--border);font-family:'Exo 2',sans-serif;font-size:0.9rem;color:var(--text);background:var(--bg);outline:none;transition:border-color 0.2s}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--blue);background:#fff}
-.form-group textarea{resize:vertical;min-height:88px}
+.form-group label{display:block;font-size:0.75rem;font-weight:600;letter-spacing:0.4px;text-transform:uppercase;color:var(--text-dim);margin-bottom:7px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'Inter',sans-serif;font-size:0.9rem;color:var(--text);background:var(--bg);outline:none;transition:all 0.2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(26,86,219,0.08)}
+.form-group textarea{resize:vertical;min-height:90px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.save-bar{display:flex;align-items:center;gap:14px;margin-top:6px;padding-top:20px;border-top:1px solid var(--border)}
-.save-btn{font-family:'Share Tech Mono',monospace;font-size:0.76rem;letter-spacing:2px;text-transform:uppercase;padding:12px 28px;background:var(--blue);color:#fff;border:none;cursor:pointer;transition:all 0.2s;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%)}
-.save-btn:hover{background:#003ecc;box-shadow:0 4px 16px var(--blue-glow)}
-.saved-msg{font-family:'Share Tech Mono',monospace;font-size:0.72rem;color:var(--teal);opacity:0;transition:opacity 0.3s;letter-spacing:1px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat-pair{display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:end}
+.save-bar{display:flex;align-items:center;gap:14px;margin-top:4px;padding-top:20px;border-top:1px solid var(--border)}
+.save-btn{font-size:0.84rem;font-weight:600;padding:11px 26px;background:var(--blue);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:all 0.2s}
+.save-btn:hover{background:#1448c4;box-shadow:0 4px 14px var(--blue-glow)}
+.saved-msg{font-size:0.78rem;font-weight:500;color:var(--teal);opacity:0;transition:opacity 0.3s}
 .saved-msg.show{opacity:1}
 
-/* PROJECTS */
-.proj-item{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border:1.5px solid var(--border);margin-bottom:12px;background:var(--surface);transition:border-color 0.2s}
-.proj-item:hover{border-color:rgba(0,87,255,0.3)}
+/* ── PROJECTS ── */
+.proj-item{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;background:var(--surface);transition:border-color 0.2s,box-shadow 0.2s}
+.proj-item:hover{border-color:var(--border-hi);box-shadow:0 2px 10px rgba(26,86,219,0.07)}
 .proj-item-left{display:flex;align-items:center;gap:14px}
-.proj-emoji{font-size:1.4rem;width:42px;height:42px;background:var(--blue-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.proj-item-name{font-family:'Orbitron',monospace;font-size:0.85rem;font-weight:700;color:var(--text)}
-.proj-item-tag{font-family:'Share Tech Mono',monospace;font-size:0.64rem;color:var(--blue);margin-top:3px;letter-spacing:1px}
+.proj-emoji{font-size:1.3rem;width:42px;height:42px;background:var(--blue-dim);border:1px solid rgba(26,86,219,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.proj-item-name{font-size:0.9rem;font-weight:700;color:var(--text)}
+.proj-item-tag{font-size:0.72rem;font-weight:500;color:var(--blue);margin-top:3px;background:var(--blue-dim);padding:2px 8px;border-radius:100px;display:inline-block}
 .proj-item-btns{display:flex;gap:8px;flex-shrink:0}
-.edit-btn,.del-btn{font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:1px;padding:6px 14px;border:1.5px solid;cursor:pointer;text-transform:uppercase;transition:all 0.2s}
-.edit-btn{background:var(--blue-dim);color:var(--blue);border-color:var(--border)}
+.edit-btn,.del-btn{font-size:0.76rem;font-weight:600;padding:6px 14px;border-radius:6px;border:1.5px solid;cursor:pointer;transition:all 0.2s}
+.edit-btn{background:var(--blue-dim);color:var(--blue);border-color:rgba(26,86,219,0.2)}
 .edit-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
-.del-btn{background:#fff5f5;color:var(--red);border-color:rgba(204,34,0,0.2)}
-.del-btn:hover{background:var(--red);color:#fff}
-.add-btn{font-family:'Share Tech Mono',monospace;font-size:0.72rem;letter-spacing:1px;padding:10px 20px;background:rgba(0,184,169,0.1);color:var(--teal);border:1.5px solid rgba(0,184,169,0.3);cursor:pointer;text-transform:uppercase;transition:all 0.2s;margin-bottom:20px;display:inline-block}
-.add-btn:hover{background:var(--teal);color:#fff}
-.proj-form{background:var(--bg2);border:1.5px solid var(--blue);padding:24px;margin-bottom:24px;display:none}
+.del-btn{background:#fef2f2;color:var(--red);border-color:rgba(220,38,38,0.2)}
+.del-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.add-btn{font-size:0.82rem;font-weight:600;padding:10px 20px;background:rgba(13,148,136,0.08);color:var(--teal);border:1.5px solid rgba(13,148,136,0.25);border-radius:8px;cursor:pointer;transition:all 0.2s;margin-bottom:20px;display:inline-block}
+.add-btn:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+.proj-form{background:var(--bg2);border:1.5px solid var(--border-hi);border-radius:12px;padding:24px;margin-bottom:24px;display:none}
 .proj-form.open{display:block}
-.proj-form-hdr{font-family:'Orbitron',monospace;font-size:0.88rem;font-weight:700;color:var(--blue);margin-bottom:20px}
-.cancel-btn{font-family:'Share Tech Mono',monospace;font-size:0.72rem;letter-spacing:1px;padding:10px 20px;background:none;color:var(--text-dim);border:1.5px solid var(--border);cursor:pointer;text-transform:uppercase;transition:all 0.2s}
+.proj-form-hdr{font-size:0.95rem;font-weight:700;color:var(--blue);margin-bottom:20px}
+.cancel-btn{font-size:0.82rem;font-weight:500;padding:10px 20px;background:none;color:var(--text-dim);border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s}
 .cancel-btn:hover{border-color:var(--text);color:var(--text)}
 
-.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.stat-pair{display:grid;grid-template-columns:80px 1fr;gap:10px;align-items:end}
+/* ── HINT BOX ── */
+.hint-box{background:rgba(13,148,136,0.06);border:1px solid rgba(13,148,136,0.2);border-radius:10px;padding:14px 18px;margin-bottom:28px;font-size:0.82rem;color:var(--text-mid);line-height:1.6}
+.hint-box strong{color:var(--teal);font-weight:600}
 
 @media(max-width:600px){
-  .form-row,.form-row-3{grid-template-columns:1fr}
-  .stat-grid{grid-template-columns:1fr}
+  .form-row,.stat-grid{grid-template-columns:1fr}
+  .stat-pair{grid-template-columns:1fr 1fr}
   .proj-item{flex-direction:column;align-items:flex-start}
   .proj-item-btns{align-self:flex-end}
   .dash-body{padding:20px 4%}
   .tabs{gap:0}
-  .tab{padding:10px 14px;font-size:0.65rem}
+  .tab{padding:10px 14px;font-size:0.78rem}
+  .card{padding:20px}
 }
 </style>
 </head>
@@ -112,15 +116,15 @@ body{font-family:'Exo 2',sans-serif;background:var(--bg);color:var(--text);min-h
 <div class="login-wrap" id="loginWrap">
   <div class="login-card">
     <div class="login-header">
-      <h1>ADMIN PANEL</h1>
-      <p>Arpan Bhuva - Portfolio Dashboard</p>
+      <h1>Admin Panel</h1>
+      <p>Arpan Bhuva — Portfolio Dashboard</p>
     </div>
     <div class="login-body">
       <label>Password</label>
-      <input type="password" id="passInput" placeholder="Enter password" onkeydown="if(event.key==='Enter')tryLogin()"/>
+      <input type="password" id="passInput" placeholder="Enter your password" onkeydown="if(event.key==='Enter')tryLogin()"/>
       <button class="login-btn" onclick="tryLogin()">Access Dashboard</button>
-      <div class="login-err" id="loginErr">Incorrect password. Try again.</div>
-      <div class="login-hint">Only you know this page exists.</div>
+      <div class="login-err" id="loginErr">Incorrect password. Please try again.</div>
+      <div class="login-hint">This page is private. Only you know it exists.</div>
     </div>
   </div>
 </div>
@@ -128,15 +132,17 @@ body{font-family:'Exo 2',sans-serif;background:var(--bg);color:var(--text);min-h
 <!-- DASHBOARD -->
 <div class="dash" id="dash">
   <div class="dash-nav">
-    <div class="dash-logo">Admin Panel</div>
+    <div class="dash-logo">Arpan<span>.</span>Admin</div>
     <div class="dash-nav-right">
       <a href="index.html" target="_blank" class="view-btn">View Portfolio</a>
-      <button class="logout-btn" onclick="logout()">Logout</button>
+      <button class="logout-btn" onclick="logout()">Log Out</button>
     </div>
   </div>
   <div class="dash-body">
     <div class="dash-title">Portfolio Dashboard</div>
-    <div class="dash-sub">Manage your portfolio content. Changes save instantly to your browser.</div>
+    <div class="dash-sub">Manage your portfolio content — all changes are saved to your browser.</div>
+
+    <div class="hint-box"><strong>Tip:</strong> After making changes here, open your portfolio in another tab to see them live. To make changes permanent on your website, re-upload <strong>index.html</strong> to GitHub.</div>
 
     <div class="tabs">
       <button class="tab active" onclick="switchTab('projects',this)">Projects</button>
@@ -148,7 +154,6 @@ body{font-family:'Exo 2',sans-serif;background:var(--bg);color:var(--text);min-h
     <!-- PROJECTS TAB -->
     <div class="tab-content active" id="tab-projects">
       <button class="add-btn" onclick="openProjForm(-1)">+ Add New Project</button>
-
       <div class="proj-form" id="projForm">
         <div class="proj-form-hdr" id="projFormTitle">Add New Project</div>
         <input type="hidden" id="editIdx" value="-1"/>
@@ -159,18 +164,17 @@ body{font-family:'Exo 2',sans-serif;background:var(--bg);color:var(--text);min-h
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label>Icon Emoji</label><input type="text" id="pf-icon" placeholder="e.g. &#9881;" maxlength="4"/></div>
-          <div class="form-group"><label>GitHub Link</label><input type="url" id="pf-link" placeholder="https://github.com/..."/></div>
+          <div class="form-group"><label>Icon (single emoji)</label><input type="text" id="pf-icon" placeholder="e.g. &#9881;" maxlength="4"/></div>
+          <div class="form-group"><label>GitHub Link</label><input type="url" id="pf-link" placeholder="https://github.com/Arpanbhuva/..."/></div>
         </div>
-        <div class="form-group"><label>Description</label><textarea id="pf-desc" placeholder="Describe what the project does..."></textarea></div>
+        <div class="form-group"><label>Description</label><textarea id="pf-desc" placeholder="Describe what the project does and how..."></textarea></div>
         <div class="form-group"><label>Tech Tags (comma separated)</label><input type="text" id="pf-techs" placeholder="Verilog, FSM, Xilinx Vivado"/></div>
         <div class="save-bar">
           <button class="save-btn" onclick="saveProject()">Save Project</button>
           <button class="cancel-btn" onclick="closeProjForm()">Cancel</button>
-          <span class="saved-msg" id="projSavedMsg">Saved!</span>
+          <span class="saved-msg" id="projSavedMsg">Saved successfully!</span>
         </div>
       </div>
-
       <div id="projList"></div>
     </div>
 
@@ -178,14 +182,45 @@ body{font-family:'Exo 2',sans-serif;background:var(--bg);color:var(--text);min-h
     <div class="tab-content" id="tab-about">
       <div class="card">
         <div class="card-title">Bio Text</div>
-        <div class="form-group"><label>Paragraph 1 - Introduction</label><textarea id="ab-p1"></textarea></div>
-        <div class="form-group"><label>Paragraph 2 - Core Focus (VLSI)</label><textarea id="ab-p2"></textarea></div>
-        <div class="form-group"><label>Paragraph 3 - Secondary Focus</label><textarea id="ab-p3"></textarea></div>
-        <div class="form-group"><label>Skills (comma separated)</label><input type="text" id="ab-skills"/></div>
+        <div class="form-group"><label>Paragraph 1 — Introduction</label><textarea id="ab-p1"></textarea></div>
+        <div class="form-group"><label>Paragraph 2 — Core Focus (VLSI)</label><textarea id="ab-p2"></textarea></div>
+        <div class="form-group"><label>Paragraph 3 — Secondary Focus</label><textarea id="ab-p3"></textarea></div>
+        <div class="form-group"><label>Skills (comma separated)</label><input type="text" id="ab-skills" placeholder="Verilog, VHDL, FPGA, ..."/></div>
         <div class="save-bar">
           <button class="save-btn" onclick="saveAbout()">Save About</button>
-          <span class="saved-msg" id="aboutSavedMsg">Saved!</span>
+          <span class="saved-msg" id="aboutSavedMsg">Saved successfully!</span>
         </div>
+
+      <div class="card" style="margin-top:0">
+        <div class="card-title">Profile Status Badge</div>
+        <p style="font-size:0.82rem;color:var(--text-dim);margin-bottom:20px;line-height:1.6">This controls the <strong>Status</strong> row in your profile panel on the portfolio.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Status Text</label>
+            <input type="text" id="st-text" placeholder="e.g. Open to Internships"/>
+          </div>
+          <div class="form-group">
+            <label>Badge Color</label>
+            <select id="st-color">
+              <option value="teal">Green (Open / Available)</option>
+              <option value="blue">Blue (Neutral)</option>
+              <option value="orange">Orange (Part-time / Limited)</option>
+              <option value="red">Red (Not Available)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Visibility</label>
+          <select id="st-show">
+            <option value="yes">Show status badge</option>
+            <option value="no">Hide status badge</option>
+          </select>
+        </div>
+        <div class="save-bar">
+          <button class="save-btn" onclick="saveStatus()">Save Status</button>
+          <span class="saved-msg" id="statusSavedMsg">Saved successfully!</span>
+        </div>
+      </div>
       </div>
     </div>
 
@@ -201,7 +236,7 @@ body{font-family:'Exo 2',sans-serif;background:var(--bg);color:var(--text);min-h
         <div class="form-group"><label>Contact Panel Message</label><textarea id="ct-msg"></textarea></div>
         <div class="save-bar">
           <button class="save-btn" onclick="saveContact()">Save Contact</button>
-          <span class="saved-msg" id="contactSavedMsg">Saved!</span>
+          <span class="saved-msg" id="contactSavedMsg">Saved successfully!</span>
         </div>
       </div>
     </div>
@@ -209,12 +244,12 @@ body{font-family:'Exo 2',sans-serif;background:var(--bg);color:var(--text);min-h
     <!-- HERO TAB -->
     <div class="tab-content" id="tab-hero">
       <div class="card">
-        <div class="card-title">Hero Section</div>
+        <div class="card-title">Hero Section Text</div>
         <div class="form-row">
-          <div class="form-group"><label>Role / Title</label><input type="text" id="hr-role" placeholder="Electronics & Communication Engineer"/></div>
-          <div class="form-group"><label>Description</label><input type="text" id="hr-desc"/></div>
+          <div class="form-group"><label>Role / Title</label><input type="text" id="hr-role" placeholder="VLSI Design &amp; Embedded Systems"/></div>
+          <div class="form-group"><label>Short Description</label><input type="text" id="hr-desc" placeholder="3rd-year ECE student..."/></div>
         </div>
-        <div class="card-title" style="margin-top:20px">Stats Bar</div>
+        <div class="card-title" style="margin-top:8px">Stats Bar</div>
         <div class="stat-grid">
           <div class="stat-pair">
             <div class="form-group"><label>Stat 1 No.</label><input type="text" id="s1n"/></div>
@@ -235,19 +270,19 @@ body{font-family:'Exo 2',sans-serif;background:var(--bg);color:var(--text);min-h
         </div>
         <div class="save-bar">
           <button class="save-btn" onclick="saveHero()">Save Hero</button>
-          <span class="saved-msg" id="heroSavedMsg">Saved!</span>
+          <span class="saved-msg" id="heroSavedMsg">Saved successfully!</span>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 
 <script>
 var PASS='arpan2024';
-
 var DEFAULTS={
-  hero:{role:'Electronics & Communication Engineer',desc:'3rd-year ECE student with a core focus on VLSI & Chip Design - building digital logic, FSM controllers, and FPGA-based systems from the ground up using Verilog HDL.',s1n:'5',s1l:'GitHub Projects',s2n:'02',s2l:'Specializations',s3n:'3rd',s3l:'Year B.Tech',s4n:'ON',s4l:'Open to Intern'},
-  about:{p1:'I am Arpan Bhuva, a 3rd-year B.Tech ECE student at Dharmsinh Desai University, passionate about designing hardware that thinks - from transistor-level logic to intelligent embedded systems.',p2:'My core focus is VLSI and Chip Design - building digital systems from the ground up using Verilog HDL, implementing Finite State Machines, and verifying behaviour through simulation and synthesis on FPGA platforms.',p3:'Alongside VLSI, I work on Embedded Systems and IoT projects - bridging hardware and real-world applications through circuit design, sensor interfacing, and microcontroller-based prototyping.',skills:'Verilog,VHDL,FPGA,FSM Design,Xilinx Vivado,ModelSim,Proteus,PCB Design,Arduino,ESP32,C / C++,Python'},
+  hero:{role:'VLSI Design & Embedded Systems',desc:'3rd-year ECE student with a core focus on VLSI & Chip Design.',s1n:'5',s1l:'GitHub Projects',s2n:'2',s2l:'Specializations',s3n:'3rd',s3l:'Year, B.Tech',s4n:'DDU',s4l:'Nadiad, Gujarat'},
+  about:{p1:'I am Arpan Bhuva, a 3rd-year B.Tech ECE student at Dharmsinh Desai University, passionate about designing hardware that thinks.',p2:'My core focus is VLSI and Chip Design - building digital systems from the ground up using Verilog HDL, implementing Finite State Machines, and verifying behaviour through simulation and synthesis on FPGA platforms.',p3:'Alongside VLSI, I work on Embedded Systems and IoT projects - bridging hardware and real-world applications through circuit design, sensor interfacing, and microcontroller-based prototyping.',skills:'Verilog,VHDL,FPGA,FSM Design,Xilinx Vivado,ModelSim,Proteus,PCB Design,Arduino,ESP32,C / C++,Python'},
   contact:{email:'arpanbhuva27@gmail.com',linkedin:'https://www.linkedin.com/in/arpan-bhuva/',github:'https://github.com/Arpanbhuva',msg:'Currently seeking internships in VLSI or Embedded Systems. If you are working on interesting hardware challenges or research, I would love to connect and contribute.'},
   projects:[
     {id:1,icon:'&#128161;',tag:'Hardware',title:'Auto Power Saving System',desc:'Hardware-based automatic room power-saving system using bidirectional IR sensors, relay, and optocoupler.',techs:'IR Sensors,Relay,Optocoupler,Counter IC,Proteus',link:'https://github.com/Arpanbhuva/Automatic-Power-Saving-System-Using-Bidirectional-IRs'},
@@ -260,6 +295,7 @@ var DEFAULTS={
 
 function get(k){try{var d=localStorage.getItem('pf_'+k);return d?JSON.parse(d):null;}catch(e){return null;}}
 function set(k,v){try{localStorage.setItem('pf_'+k,JSON.stringify(v));}catch(e){}}
+function showMsg(id){var el=document.getElementById(id);el.classList.add('show');setTimeout(function(){el.classList.remove('show');},2500);}
 
 function tryLogin(){
   if(document.getElementById('passInput').value===PASS){
@@ -276,16 +312,12 @@ function logout(){
   document.getElementById('passInput').value='';
   document.getElementById('loginErr').style.display='none';
 }
-
 function switchTab(name,btn){
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
   document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active')});
   btn.classList.add('active');
   document.getElementById('tab-'+name).classList.add('active');
 }
-
-function showMsg(id){var el=document.getElementById(id);el.classList.add('show');setTimeout(function(){el.classList.remove('show');},2500);}
-
 function loadForms(){
   var h=get('hero')||DEFAULTS.hero;
   document.getElementById('hr-role').value=h.role||'';
@@ -294,57 +326,35 @@ function loadForms(){
   document.getElementById('s2n').value=h.s2n;document.getElementById('s2l').value=h.s2l;
   document.getElementById('s3n').value=h.s3n;document.getElementById('s3l').value=h.s3l;
   document.getElementById('s4n').value=h.s4n;document.getElementById('s4l').value=h.s4l;
-
   var a=get('about')||DEFAULTS.about;
   document.getElementById('ab-p1').value=a.p1.replace(/<[^>]+>/g,'');
   document.getElementById('ab-p2').value=a.p2.replace(/<[^>]+>/g,'');
   document.getElementById('ab-p3').value=a.p3.replace(/<[^>]+>/g,'');
   document.getElementById('ab-skills').value=a.skills;
-
   var c=get('contact')||DEFAULTS.contact;
   document.getElementById('ct-email').value=c.email;
   document.getElementById('ct-linkedin').value=c.linkedin;
   document.getElementById('ct-github').value=c.github;
   document.getElementById('ct-msg').value=c.msg;
 
+  var st=get('status')||{text:'Open to Internships',color:'teal',show:'yes'};
+  document.getElementById('st-text').value=st.text;
+  document.getElementById('st-color').value=st.color;
+  document.getElementById('st-show').value=st.show;
   renderProjList();
 }
+function saveHero(){set('hero',{role:document.getElementById('hr-role').value,desc:document.getElementById('hr-desc').value,s1n:document.getElementById('s1n').value,s1l:document.getElementById('s1l').value,s2n:document.getElementById('s2n').value,s2l:document.getElementById('s2l').value,s3n:document.getElementById('s3n').value,s3l:document.getElementById('s3l').value,s4n:document.getElementById('s4n').value,s4l:document.getElementById('s4l').value});showMsg('heroSavedMsg');}
+function saveAbout(){set('about',{p1:document.getElementById('ab-p1').value,p2:document.getElementById('ab-p2').value,p3:document.getElementById('ab-p3').value,skills:document.getElementById('ab-skills').value});showMsg('aboutSavedMsg');}
+function saveContact(){set('contact',{email:document.getElementById('ct-email').value,linkedin:document.getElementById('ct-linkedin').value,github:document.getElementById('ct-github').value,msg:document.getElementById('ct-msg').value});showMsg('contactSavedMsg');}
 
-function saveHero(){
-  set('hero',{
-    role:document.getElementById('hr-role').value,
-    desc:document.getElementById('hr-desc').value,
-    s1n:document.getElementById('s1n').value,s1l:document.getElementById('s1l').value,
-    s2n:document.getElementById('s2n').value,s2l:document.getElementById('s2l').value,
-    s3n:document.getElementById('s3n').value,s3l:document.getElementById('s3l').value,
-    s4n:document.getElementById('s4n').value,s4l:document.getElementById('s4l').value
-  });showMsg('heroSavedMsg');
-}
-function saveAbout(){
-  set('about',{
-    p1:document.getElementById('ab-p1').value,
-    p2:document.getElementById('ab-p2').value,
-    p3:document.getElementById('ab-p3').value,
-    skills:document.getElementById('ab-skills').value
-  });showMsg('aboutSavedMsg');
-}
-function saveContact(){
-  set('contact',{
-    email:document.getElementById('ct-email').value,
-    linkedin:document.getElementById('ct-linkedin').value,
-    github:document.getElementById('ct-github').value,
-    msg:document.getElementById('ct-msg').value
-  });showMsg('contactSavedMsg');
-}
-
-// PROJECTS
 function renderProjList(){
   var projs=get('projects')||DEFAULTS.projects;
   var list=document.getElementById('projList');list.innerHTML='';
+  if(projs.length===0){list.innerHTML='<p style="color:var(--text-dim);font-size:0.85rem;padding:16px 0">No projects yet. Add your first one above.</p>';return;}
   projs.forEach(function(p,i){
     var item=document.createElement('div');item.className='proj-item';
     item.innerHTML='<div class="proj-item-left"><div class="proj-emoji">'+p.icon+'</div>'
-      +'<div><div class="proj-item-name">'+p.title+'</div><div class="proj-item-tag">'+p.tag+'</div></div></div>'
+      +'<div><div class="proj-item-name">'+p.title+'</div><span class="proj-item-tag">'+p.tag+'</span></div></div>'
       +'<div class="proj-item-btns">'
       +'<button class="edit-btn" onclick="openProjForm('+i+')">Edit</button>'
       +'<button class="del-btn" onclick="deleteProj('+i+')">Delete</button>'
@@ -352,18 +362,13 @@ function renderProjList(){
     list.appendChild(item);
   });
 }
-
 function openProjForm(idx){
   var form=document.getElementById('projForm');form.classList.add('open');
   document.getElementById('editIdx').value=idx;
   if(idx===-1){
     document.getElementById('projFormTitle').textContent='Add New Project';
-    document.getElementById('pf-title').value='';
+    ['pf-title','pf-link','pf-desc','pf-techs','pf-icon'].forEach(function(id){document.getElementById(id).value='';});
     document.getElementById('pf-tag').value='VLSI';
-    document.getElementById('pf-icon').value='';
-    document.getElementById('pf-link').value='';
-    document.getElementById('pf-desc').value='';
-    document.getElementById('pf-techs').value='';
   } else {
     var p=(get('projects')||DEFAULTS.projects)[idx];
     document.getElementById('projFormTitle').textContent='Edit Project';
@@ -376,29 +381,26 @@ function openProjForm(idx){
   }
   form.scrollIntoView({behavior:'smooth',block:'start'});
 }
-
 function closeProjForm(){document.getElementById('projForm').classList.remove('open');}
-
 function saveProject(){
   var projs=get('projects')||DEFAULTS.projects;
   var idx=parseInt(document.getElementById('editIdx').value);
-  var p={
-    id:idx===-1?Date.now():(projs[idx]||{}).id||Date.now(),
-    title:document.getElementById('pf-title').value,
-    tag:document.getElementById('pf-tag').value,
-    icon:document.getElementById('pf-icon').value||'&#9881;',
-    link:document.getElementById('pf-link').value,
-    desc:document.getElementById('pf-desc').value,
-    techs:document.getElementById('pf-techs').value
-  };
+  var p={id:idx===-1?Date.now():(projs[idx]||{}).id||Date.now(),title:document.getElementById('pf-title').value,tag:document.getElementById('pf-tag').value,icon:document.getElementById('pf-icon').value||'&#9881;',link:document.getElementById('pf-link').value,desc:document.getElementById('pf-desc').value,techs:document.getElementById('pf-techs').value};
   if(idx===-1){projs.push(p);}else{projs[idx]=p;}
   set('projects',projs);renderProjList();closeProjForm();showMsg('projSavedMsg');
 }
 
+function saveStatus(){
+  set('status',{
+    text:document.getElementById('st-text').value||'Open to Internships',
+    color:document.getElementById('st-color').value,
+    show:document.getElementById('st-show').value
+  });
+  showMsg('statusSavedMsg');
+}
 function deleteProj(idx){
   if(!confirm('Delete this project? This cannot be undone.'))return;
-  var projs=get('projects')||DEFAULTS.projects;
-  projs.splice(idx,1);set('projects',projs);renderProjList();
+  var projs=get('projects')||DEFAULTS.projects;projs.splice(idx,1);set('projects',projs);renderProjList();
 }
 </script>
 </body>
